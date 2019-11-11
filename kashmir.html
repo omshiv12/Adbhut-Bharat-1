@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<title>Adbhut Bharat &mdash; Kashmir</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="kashmir.css">
+<link rel="stylesheet" type="text/css" href="background.css">
+<link rel="stylesheet" type="text/css" href="header.css">
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400i|Slabo+27px|Permanent+Marker|Cinzel|Satisfy|Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+<head><div id="header">
+<style>
+body { 
+  background: lightblue url("img.jpeg") no-repeat fixed center; 
+}
+</style>
+</div>
+</head>
+<style>
+.mySlides {display:none}
+</style>
+<body>
+   
+    <div id="header">
+<div id="nav">
+            <ul>
+                <li><img alt="Logo" src="image/logo.png" id="logo"></li>
+                <li><a href="form.html" class="nav-link">Sign In</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="agent.html" class="nav-link">Agents</a></li>
+                <li><a href="states.html" class="nav-link">Locations</a></li>
+                <li><a href="header.html" class="nav-link">Home</a></li>
+                
+            </ul>
+        </div >
+        <div class="search">
+            <input type="search" class="search-box" name="search" placeholder="Search.."><i class="fas fa-search fa-2x search_icon" aria-hidden="true"></i>
+        </div>
+    </div>
+    <br><br><br><br><br><br><br>  
+<div class="w3-container" style="height: 400px;"> 
+        <div style="text-align: center"> 
+  <b><h1 style="font-family: 'Cinzel', serif;font-weight: 10000;font-size: 40px;">Jammu & Kashmir</h1></div></b><br>
+<h2><div style="text-align:center ; color:maroon;text-decoration: underline;"><b>PARADISE ON EARTH</b></div></h2>
+<div style="font-family: cursive; font-size: 20px; margin:20px;">
+       <p style="font-family: 'Roboto', cursive;"> "Gar firdaus bar-rue zamin ast, hami asto, hamin asto, hamin ast.” “If there is a heaven on earth, it's here, it's here, it's here.” Mughal Emperor Jehangir said it all when he visited Kashmir in 
+        the 17th century.<br/>(J & K) consists of three divisions: Jammu, the Kashmir Valley and Ladakh.Kashmir is the paradise of tourists: Its scenic beauty and salubrious climate have given it the aptitude of “Tourists Paradise.”
+         With its lakes and mountains, its luxurious chinars and tall slender poplars, delicious fruits ancient monuments, its placid rivers and murmuring streams swarming with Himalayan trout, and a host of innumerable natural attractions Kashmir, 
+        as G.T. Vigne prophesied in 1885, has become the sine qua non of the traveller to the East.</p></div>
+</div>
+
+<div class="w3-content" >
+    <a href="www.google.com"><img class="mySlides" src="dallakesri.JPG" style="width:1000px; height: 350px;"></a>
+    <a href="www.google.com"><img class="mySlides" src="gulmarg.JPG" style="width:1000px; height: 350px;"></a>
+    <a href="www.google.com"><img class="mySlides" src="patnitop1.JPG" style="width:1000px; height: 350px;"></a>
+    <a href="www.google.com"><img class="mySlides" src="sonmarg1.JPG" style="width:1000px; height: 350px;"></a>
+    <a href="www.google.com"><img class="mySlides" src="lehladhak.JPG" style="width:1000px; height: 350px;"></a>
+    <a href="www.google.com"> <img class="mySlides" src="pahalgam.JPG" style="width:1000px; height: 350px;"></a>
+  </div>
+
+<div class="w3-center">
+  <div class="w3-section">
+    <button class="w3-button w3-light-grey" onclick="plusDivs(-1)">❮ Prev</button>
+    <button class="w3-button w3-light-grey" onclick="plusDivs(1)">Next ❯</button>
+  </div>
+  <button class="w3-button demo" onclick="currentDiv(1)">1</button> 
+  <button class="w3-button demo" onclick="currentDiv(2)">2</button> 
+  <button class="w3-button demo" onclick="currentDiv(3)">3</button>
+  <button class="w3-button demo" onclick="currentDiv(4)">4</button> 
+  <button class="w3-button demo" onclick="currentDiv(5)">5</button> 
+  <button class="w3-button demo" onclick="currentDiv(6)">6</button>  
+</div>
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-red", "");
+  }
+  x[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " w3-red";
+}
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+</script>
+<script>
+    $(function(){
+//$("#header").load("header.html"); 
+$("#footer").load("footer.html"); 
+});
+</script>
+<div id="footer"></div>
+
+</body>
+</html>

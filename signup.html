@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href='s2.css'>
+    <link rel="stylesheet" type="text/css" href="header.css">
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400i|Slabo+27px|Permanent+Marker|Cinzel|Satisfy|Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+</head>
+<body>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+</script>
+    <script type="text/javascript">
+        $(function(){
+  $("#header").load("header.html"); 
+ 
+});
+    </script>
+    <div id="header"></div>
+      
+    <!-- </div> -->
+    <br><br><br><br>
+    <div class="loginbox">
+        <h2><center>Register Here</center></h2><br><br>
+        <form method="POST" name="myform" action="input.php">
+            <p>Name*:</p>
+            <input type="text" name="name" placeholder="Enter Your Name" required="true">
+            <br>
+            <p>City:</p>
+            <input type="text" name="city" placeholder="Enter Your City">
+            <br>
+            <p>State:</p>
+            <input type="text" name="state" placeholder="Enter Your State">
+            <br>
+            <p>Mobile No*:</p>
+            <input type="text" name="phn" placeholder="Enter your mobile number" required="true" minlength="10" maxlength="10">
+            <br>
+            <p>Email:</p>
+            <input type="text" name="mail" placeholder="Enter Email" required="true">
+            <p>Password*:</p>
+            <input type="password" name="pass1" placeholder="Enter Your Password" required="true">
+            <br>
+            <p>Confirm Password*:</p>
+            <input type="password" name="pass2" placeholder="Enter Your Password again" required="true">
+            <br>
+            <input type="submit" name="submit" value="Sign up" onsubmit="return valid()">
+            <br>
+            <a href="#">Forgot Password</a>
+        </form>
+
+
+    </div>
+    <script type="text/javascript">
+        function valid()
+{
+    
+    var x=document.myform.name.value;
+    var y=document.myform.phn.value;
+    var z=document.myform.mail.value;
+    var w=document.myform.pass1.value;
+    var v=document.myform.pass2.value;
+    var rex=/^[a-z A-Z /s]+$/;
+    var rexpw=/^[a-z A-Z 0-8]+$/;
+    // if(x==""||y==""||z==""||w==""||v=="")
+    // {
+    //     alert("you cant leave the data blank!");
+    //     return false;
+    // }
+    else
+    {
+        if(rex.test(x)==false)
+        {
+            alert ("Name must only contain letter and white spaces");
+            return false;
+        }
+        if(w!=v)
+        {
+            alert("Passwords do not match");
+            return false;
+        }
+        if(w.length<8)
+        {
+            alert("password must contain atleast 8 characters");
+            return false;
+        }
+        if(rexpw.test(w)==false)
+        {
+            alert("password must contain alphanumeric values");
+            return false;
+        }
+        if(y.length<10)
+        {
+            alert("Enter valid phone no.");
+            return false;
+        }
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(z)==false)
+        {
+            alert("You have entered an invalid email address!");
+            return false;
+        }
+    
+        return true;
+        
+    }
+    
+
+}
+    </script>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+</script>
+    <script type="text/javascript">
+        $(function(){
+  $("#footer").load("footer.html"); 
+ 
+});
+    </script>
+    <div id="footer"></div>
+      
+    </div>
+  
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/mediaelement-and-player.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.countdown.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/bootstrap-datepicker.min.js"></script>
+  <script src="js/aos.js"></script>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
