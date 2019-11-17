@@ -1,0 +1,171 @@
+-- Adminer 4.6.2 MySQL dump
+
+SET NAMES utf8;
+SET time_zone = '+00:00';
+SET foreign_key_checks = 0;
+SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
+
+DROP DATABASE IF EXISTS `bharat`;
+CREATE DATABASE `bharat`;
+
+USE `bharat`;
+
+
+DROP TABLE IF EXISTS `advertisement`;
+CREATE TABLE `advertisement` (
+  `ad_id` int(11) NOT NULL,
+  `agent_id` int(11) NOT NULL,
+  `offer` text NOT NULL,
+  `img` varchar(255) NOT NULL,
+  `price` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `state` varchar(255) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'Inactive'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `agent`;
+CREATE TABLE `agent` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(225) NOT NULL,
+  `phone` varchar(10) NOT NULL,
+  `city` varchar(20) NOT NULL,
+  `state` varchar(20) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'Inactive',
+  `payment` int(11) NOT NULL,
+  `otp` int(6) NOT NULL,
+  `places` text NOT NULL,
+  `date_of_joining` varchar(20) NOT NULL,
+  `work_experience` varchar(20) NOT NULL,
+  `time_of_joining` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+INSERT INTO `agent` (`id`, `name`, `email`, `password`, `phone`, `city`, `state`, `status`, `payment`, `otp`, `places`, `date_of_joining`, `work_experience`, `time_of_joining`) VALUES
+(24,	'moyal',	'moyal@123.com',	'750aea81a9d3e9ca026353b4814fb80b',	'9828282828',	'hapur',	'UP',	'Active',	0,	0,	'',	'',	'',	''),
+(23,	'Dummy',	'asd@gmail.com',	'fef3165bbaf39c69cf363f4ab0693b9a',	'9999999999',	'Noida',	'UP',	'Active',	0,	0,	'',	'',	'',	''),
+(12,	'Punit Jain',	'punitj1221@gmail.com',	'fef3165bbaf39c69cf363f4ab0693b9a',	'6264346285',	'Indore',	'Madhya Pradesh',	'Active',	0,	0,	'',	'',	'',	''),
+(15,	'Shivam Singhal ',	'shivam@gmail.com',	'69f404925df883e0e5579d65b7768e7c',	'9999999999',	'Modinagar',	'Uttar Pradesh',	'Active',	0,	0,	'',	'',	'',	''),
+(22,	'priyank pratap singh',	'priyankpratapsingh007@gmail.com',	'e10adc3949ba59abbe56e057f20f883e',	'8218768594',	'noida',	'uttarr pradesh',	'Active',	0,	0,	'',	'',	'',	''),
+(20,	'Mukund madhav goyal',	'goyalmadhav12@gmail.com',	'7ff5a5bf82d506fe29331e55e652d55e',	'7060207573',	'Noida',	'U.P.',	'Active',	0,	0,	'',	'',	'',	''),
+(21,	'Aashi',	'cutesoffie2307@gmail.com',	'5f4dcc3b5aa765d61d8327deb882cf99',	'6388411736',	'varanasi',	'uttar pradesh',	'Active',	0,	0,	'',	'',	'',	'');
+
+DROP TABLE IF EXISTS `images`;
+CREATE TABLE `images` (
+  `city_name` varchar(255) NOT NULL,
+  `image_address` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `images` (`city_name`, `image_address`) VALUES
+('Modinagar',	'img/img3.jpg'),
+('Ratanpur',	'img/img.jpg');
+
+DROP TABLE IF EXISTS `location`;
+CREATE TABLE `location` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Location` varchar(255) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `trip`;
+CREATE TABLE `trip` (
+  `location_id` int(100) NOT NULL AUTO_INCREMENT,
+  `state_name` varchar(80) NOT NULL,
+  `city_name` varchar(80) NOT NULL,
+  `place_name` varchar(80) NOT NULL,
+  `liked` varchar(80) NOT NULL,
+  `type` varchar(80) NOT NULL,
+  `cuisine` varchar(80) NOT NULL,
+  `accommodation` varchar(80) NOT NULL,
+  `climate` varchar(80) NOT NULL,
+  `attraction` varchar(80) NOT NULL,
+  `shopping` varchar(80) NOT NULL,
+  `location_type` varchar(55) NOT NULL,
+  PRIMARY KEY (`location_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+INSERT INTO `trip` (`location_id`, `state_name`, `city_name`, `place_name`, `liked`, `type`, `cuisine`, `accommodation`, `climate`, `attraction`, `shopping`, `location_type`) VALUES
+(1,	'U.P',	'Modinagar',	'Modi Mandir',	'painting',	'stone',	'barfi',	'hall',	'sunny',	'garden',	'null',	'desert and history'),
+(2,	'DELHI',	'delhi',	'INDIA GATE',	'Epitome of Triumph',	'Black Marble Plinth',	'',	'',	'same as city climate',	'42 meter high Arc-de-Triomphe',	'',	'beach wave and chill'),
+(3,	'DELHI',	'delhi',	'INDIA GATE',	'Epitome of Triumph',	'Black Marble Plinth',	'',	'',	'same as city climate',	'42 meter high Arc-de-Triomphe',	'',	'beach wave and chill'),
+(4,	'DELHI',	'delhi',	'RED FORT',	'Hall of Public Audience',	'Red Stone',	'',	'',	'same as city',	'Evening show',	'Chatta Chowk',	'beach wave and chill'),
+(5,	'DELHI',	'delhi',	'Humayun Tomb',	'First garden tomb of indian sub-continent',	'Persian style',	'',	'',	'same as city',	'Charbagh Garden',	'Nizzamuddin Dargah Market',	'beach wave and chill'),
+(6,	'DELHI',	'delhi',	'RED FORT',	'Prime Minister hoists flag',	'red stone ',	'',	'',	'same as city',	'Evening Show',	'Chatta Chowk',	'mountains and valley'),
+(7,	'DELHI',	'delhi',	'RED FORT',	'Prime Minister hoists flag',	'red stone ',	'',	'',	'same as city',	'Evening Show',	'Chatta Chowk',	'beach wave and chill'),
+(8,	'DELHI',	'New delhi',	'Connaught Place',	'Showpiece of Lutyens',	'white stone',	'wenger:the pastry shop',	'',	'same as city',	'build in concentric circle',	'world\'s top brand is here',	'beach wave and chill'),
+(9,	'DELHI',	'delhi',	'Quatb Minar',	'iron piller',	'stone',	'',	'',	'same as city',	'73 meter tall minaret',	'market near by minaret',	'beach wave and chill'),
+(10,	'DELHI',	'New delhi',	'Connaught Place',	'Showpiece of Lutyens',	'white stone',	'wenger:the pastry shop',	'',	'same as city',	'build in concentric circle',	'world\'s top brand is here',	'beach wave and chill'),
+(11,	'DELHI',	'delhi',	'Quatb Minar',	'iron piller',	'stone',	'',	'',	'same as city',	'73 meter tall minaret',	'market near by minaret',	'beach wave and chill'),
+(12,	'DELHI',	'delhi',	'LOTUS TEMPLE',	'most visiting building of world',	'stone',	'',	'',	'same as city',	'Lotus flower like shape',	'near by market',	'beach wave and chill'),
+(13,	'DELHI',	'delhi',	'Purana Quila',	'three arched gate',	'gate-white and coloured marble and blue tiles',	'',	'picnic spot with lot of lodges',	'same as city',	'gate give good glimpse for rajasthani architure',	'tourist market',	'beach wave and chill'),
+(14,	'DELHI',	'delhi',	'AKSHARDHAM TEMPLE',	'sahaj water show,abhisheka mandap,thematic garden',	'granite stone',	'',	'',	'same as city',	'central point',	'exhibition hall',	'beach wave and chill'),
+(15,	'DELHI',	'New delhi',	'GURUDWARA bagla SAHIB',	'famous sikh gurudwara in the country,houses a library,hospital,museum',	'granite white stone',	'',	'',	'same as city',	'its golden dome and large flagpole',	'Connaught place',	'beach wave and chill'),
+(16,	'Chattisgarh',	'Ratanpur',	'Mahamaya Temple',	'dedicated to goddess lakshmi and sarawati  on national highway 200',	'granite ',	'',	'',	'sunny',	'considered to be kalbhairva',	'',	'mountains and valley'),
+(17,	'Chattisgarh',	'Donargarh',	'Bambleshwari Temple',	'1600 feet in donargarh',	'stone',	'',	'',	'suuny',	'rope way travel system',	'',	'mountains and valley'),
+(18,	'Chattisgarh',	'Jagdalpur',	'Danteshwari Temple',	'kuldevi of bastar',	'granite',	'',	'',	'same as city',	'52 shakti peetha',	'',	'mountains and valley'),
+(19,	'Chattisgarh',	'Chitrakot',	'Chitrakot waterfalls',	'niagara falls of india',	'',	'',	'',	'humid',	'widest waterfall in india',	'',	'mountains and valley'),
+(20,	'Chattisgarh',	'jagdalpur',	'Kailash Kutumsar Caves',	'very deep into kanger valley national park',	'',	'',	'',	'',	'near village kutumsar with major attraction',	'',	'mountains and valley'),
+(21,	'Chattisgarh',	'Bhoramdeo',	'Bhoramdeo Temple',	'khajuraho of chattisgarh',	'stone architectural features',	'',	'',	'suuny',	'erotic sculptures of khajurao and sun temple ',	'',	'mountains and valley'),
+(22,	'Chattisgarh',	'Balrampur',	'Balrampur Hot Spring',	'Taat Pani',	'',	'',	'',	'sunny',	'first geothermal power plant of India',	'',	'mountains and valley'),
+(23,	'Chattisgarh',	'Bijapur',	'Indravati national park',	'indian-rock python',	'',	'',	'',	'sunny',	' home to rare wild buffalo of chattisgarh',	'',	'desert and history'),
+(24,	'Chattisgarh',	'Ratanpur',	'Chirmiri Hill Station',	'green city',	'',	'',	'',	'cool',	'Amrit dhara waterfall',	'',	'mountains and valley'),
+(25,	'Chattisgarh',	'mainpat',	'mainpat hill station',	'shimla of chattisgarh',	'',	'',	'',	'cold',	'shaking earth and natural beauty',	'',	'mountains and valley'),
+(28,	'Mumbai',	'Mumbai',	'Gateway of India',	'Taj Mahal of India',	'white stone',	'vada pav',	'beach',	'cool',	'facing vast arabian sea',	'roadside',	''),
+(26,	'Mumbai',	'Borivali ',	'Sanjay gandhi national park',	'sprawling in 104 sq km ,most visited park in asia,family entertainer',	'',	'chacha ki chaai',	'',	'humid',	'fun day boating in artificial lake,toy train ,van rani',	'',	''),
+(27,	'Mumbai',	'Mumbai',	'Red Carpet Wax Museum',	'ever imagined standing with Barack Obama,striking pose with michael jackson',	'wax monument',	'',	'',	'',	'selfie with favourite icon',	'',	''),
+(29,	'Mumbai',	'Mumbai',	'Haji Ali Dargah',	'panormic view of the deep blue water',	'white marble',	'',	'',	'humid',	'Middle of Arabian sea,road connected with lala rajput rai marg',	'',	''),
+(30,	'Mumbai',	'Mumbai',	'Elephanta Caves',	'five caves dedicated to hindu god shiva ',	'massive rock cut caves',	'MTDC can take care of your hunger pangs',	'',	'sunny',	'one hour feery ride from gate way of india',	'',	''),
+(31,	'Mumbai',	'Mumbai',	'Siddhivinayak Temple',	'trunk bending towards right making it one of kind',	'lord ganesha-black stone',	'',	'',	'sunny',	'devotees from acroos india including actor and sports person',	'',	''),
+(32,	'Mumbai',	'right heart of Mumbai',	'Chhatrapathi Shivaji Terminus',	'UNESCO World heritage site',	'the Victorian-Gothic style architecture',	'',	'',	'humid',	'the magnificent CST is the most photographed building in india',	'',	''),
+(33,	'Mumbai',	'Mumbai',	'Nehru Center',	'propogates its teaching and ideas in educational and cultural program',	'',	'',	'',	'sunny',	'miniature galaxy with sun at center',	'',	''),
+(34,	'Mumbai',	'Ghatkopar west,Mumbai',	'Kidzania indoor amusement park',	'children get money as prize after perform thier job',	'',	'',	'',	'sunny',	'interactive edutainmaet activities',	'',	''),
+(35,	'Mumbai',	'Juhu Tara Road,Mumbai',	'Juhu Beach',	'watching crimson sun an the luminous orange sky ',	'',	'vada pav',	'',	'breezy',	'romantic date night at one the beachside restaurent',	'',	''),
+(36,	'Mumbai',	'Chowpatty,Mumbai',	'Marine Drive',	'walk hand in hand with your lover',	'',	'street food',	'',	'sunny',	'popular palce in mumbai at night',	'',	''),
+(37,	'Mumbai',	'Goregaon,Mumbai',	'Mumbai Film City',	'1000000 sq feet',	'',	'',	'',	'sunny',	'theater,garden,lakes,recording rooms,film shooting',	'',	''),
+(38,	'Mumbai',	'Pheonix Market City,Kamani Junction Kurla ,Mumbai',	'Snow World',	'experience -10 C temp,frolicsome activities  at snow world',	'',	'',	'',	'cold',	'ice skating and snowboarding',	'',	''),
+(39,	'U.P',	'Agra',	'TAJ MAHAL',	'42 acre,built for his beautiful wufe mumtaz,crenellated walls',	'ivory white marble',	'',	'guest house',	'suuny',	'one of seven wonder of world and its beauty ',	'Big market',	''),
+(40,	'U.P',	'Agra',	'Agra Red Fort',	'classic palaces,sacred mosques and massive assembly hall',	'sandstone',	'',	'anguri bagh',	'suuny',	'sheesh mahal,every corner adnored with mosaic and glasses',	'',	''),
+(41,	'U.P',	'Agra',	'Akbar Tomb',	'based on jain,buddhist,hindu,christianand islamic themes',	'red marble',	'chicken special',	'guest house',	'sunny',	'the inscription of 99 names of allah',	'',	''),
+(42,	'U.P',	'Agra',	'\r\nItmad-ud-Daulah Tomb',	'first monument of india made with marble',	'marble',	'kabab',	'',	'sunny',	'arched entrances and enticing amidst green gardens at the banks of yamuna',	'',	''),
+(43,	'U.P',	'Agra',	'Mehtab Bagh\r\n',	'Moonlight Garden',	'',	'',	'',	'sunny',	' Walk on the soft grass of the garden exploring magnificent fountains',	'',	''),
+(44,	'U.P',	'Agra',	'Mankameshwar Temple.,jewel of hindu',	' Hindu architecture',	'stone',	'',	'',	'sunny',	'folklores surrounded it complete shrine is precious in silver\r\n',	'near by market',	''),
+(45,	'U.P',	'Agra',	'Swami Bagh Samadhi\r\n',	'80 years old memorial',	'marble',	'',	'',	'sunny',	'walls of the memorial exhibit 1904 paintings and delicate floral carvings',	'',	''),
+(46,	'U.P',	'Agra',	'Fatehpur Sikri\r\n',	'Ornamented pillars, jali designed jharokhas, chhatris',	'Indo-Islamic architectural style,red sandstone',	'',	'',	'sunny',	'palatial palaces like Khas Mahal, Buland Darwaza',	'',	''),
+(47,	'RAJASTHAN',	'Jaisalmer',	'Jaisalmer Fort\r\n',	'one of the largest forts in the world',	'walls-yellow sandstone',	'dhokla',	'hotel',	'sunny',	'havelis, Laxminath temple, Jain temples',	'bazar',	''),
+(48,	'Rajasthan',	'Jaipur',	'Jaipur – The Pink City',	'Go for a desert safari, shop for Rajasthani crafts, textiles, and gems',	'',	'raj kachori',	'haveli',	'sunny',	'City Palace, Amber Fort and Palace, Jantar Mantar Observatory, Birla Mandir',	'bada bazar',	''),
+(49,	'Rajasthan',	'Jodhpur',	'Jodhpur – The Blue City ',	'blue houses near the Mehrangarh Fort',	'',	'thepla',	'hotels',	'sunny',	'The blue houses have played muse to the acclaimed photographer Steve McCurry',	'market',	''),
+(50,	'Rajasthan',	'Jodhpur',	'Mehrangarh Fort',	' imprints of cannon balls which exist since the war took place',	'',	'rajasthani thali',	'lodge',	'sunny',	'The most interesting part of the fort is the 7 gates',	'',	''),
+(51,	'Rajasthan',	'Jodhpur',	'Osian',	'desert safari in Osian',	'',	'king size dhokla',	'hotel',	'sunny',	'intricately carved walls',	'',	''),
+(52,	'Rajasthan',	'Sawai Madhopur',	'Sawai Madhopur – For The Love Of Tigers',	'Go for jungle safari, photography, birdwatching\r\n',	'',	'normal ghar food',	'rented house',	'sunny',	'Tigers play in a pool at the Ranthambhore National Park',	'',	''),
+(53,	'Rajasthan',	'Ranthambore National Park,Rajasthan',	'Ranthambore Fort',	'Fort has a long and noteworthy history of battles',	'',	'',	'',	'sunny',	'UNESCO World Heritage Site which is visited by almost all travelers',	'',	''),
+(54,	'Rajasthan',	'Pushkar',	'Pushkar – Hosts The Largest Camel Fair In India\r\n',	'Boating in the lake, photography at the fair',	'',	'normal home food',	'rented house,hotel',	'sunny',	'The world famous camel fair, the serene Pushkar lake, and Meerabai Temple',	'gali market',	''),
+(55,	'Rajasthan',	'Udaipur',	'Udaipur – The City Of Lakes',	'Boating at Lake Pichola, visiting the palaces, visiting Kumbhalgarh fort\r\n',	'',	'dhokla',	'hotel,haveli,lodge',	'sunny',	' Lake Pichola, Fateh Sagar Lake, City Palace, Jag Mandir, Udai Sagar Lake',	'Grand Market',	''),
+(56,	'Rajasthan',	'Ajmer',	'Ajmer – The Holy City',	'Attend Qawwali at Dargah Sharif, offer chadar to the grave of Sufi \r\n',	'',	'',	'near by house',	'sunny',	'Dargah Sharif, Ana Sagar Lake, Naag Pathar ranges',	'',	''),
+(57,	'Kerela',	'Alleppey',	'Alleppey – The Backwater Hot Spot\r\n',	'paddy fields, quaint chapels, interesting fishing villages',	'',	'Fish',	'near by hotel',	'rainy',	'backwater trips, houseboat stays, and serene beauty ',	'',	''),
+(58,	'Kerela',	'Munnar',	'Munnar – Perfect For A Romantic Honeymoon',	' 80,000 miles of tea plantation, an equal measure of aromatic vegetation',	'',	'best sea food',	'most amazing honeymoon resorts in Munnar',	'romantic climate',	'Cute bungalows, cozy homestays and lavish hotels and resorts in Munnar',	'',	''),
+(59,	'Kerela',	' Kumarakom',	' Kumarakom – One Of The Most Tranquil Places',	'backwaters, authentic Kerala food, uber fresh air, the warmth of Keralites',	'',	'deliciously fresh coconuts',	'resorts',	'ever pleasant weather and exotic flora',	' Kumarakom Bird Sanctuary, Kumarakom Backwaters, Aruvikkuzhi waterfall',	'',	''),
+(60,	'Kerela',	'Wayanad',	'Wayanad – The Land Of Heavenly Trails',	'the place is famous for its richness in cultures, traditions,  tribal',	'',	'thai food',	'hotels and resorts',	'rainy',	'Thusharagiri Waterfalls, Thirunelli Temple, Banasura Hill, Lakkidi View ',	'',	''),
+(61,	'Kerela',	'Thekkady',	' Thekkady – For The Love Of Wildlife',	' Thekkady boasts of abundant beauty and exotic wildlife',	'',	'continental',	'hotels',	'suuny',	'Periyar Lake, Kadathanadan Kalari Centre, Elephant Junction',	'',	''),
+(62,	'Kerela',	'Kovalam ',	'Kovalam – For Some Beach Fun',	'famous for its New Year celebrations, deep strong massages',	'',	'',	'',	'humid',	'Lighthouse Beach, Hawah Beach, The Lighthouse, Samudra Beach',	'',	''),
+(63,	'Kerela',	'Vagamon',	'Vagamon – Solitude Guaranteed',	'Adorned with magical meadows, mystical gardens, beautiful dales',	'',	'thai food',	'hotel',	'sunny',	'Thangal Hill, Murugan Hill, Kurisumala, Vagamon Pine Forest, Barren Hills',	'',	''),
+(64,	'Kerela',	'Bekal',	'Bekal – Nothing Less Than Heaven On Earth',	'Bekal is among the top three honeymoon places in South India',	'',	'thai food',	'hotels',	'sunny',	'Bekal Fort, Ananthapura Temple, Valiyaparamba Backwaters, Bekal Beach',	'',	''),
+(65,	'Kerela',	'Kozhikode',	'Kozhikode – For Authentic Malabar Cuisine',	'Kozhikode Beach, Thusharagiri Waterfalls, Sargaalaya, Payyoli Beach',	'',	'malabar cuisine,delicacies like Dum Biryani, Kallummakkaya, Chatti Patth',	'hotels and resort',	'sunny',	'Mananchira, Conolly Canal, Hilite Mall, Kallayi, Tali Temple, Kappad Beach',	'',	''),
+(66,	'Kerela',	'Varkala',	'Varkala – One Of Kerala’s Most Scenic Seasides',	'Janardan Swami Temple, Vishnu Temple, Anjengo Fort, Sarkara Devi Temple',	'',	'sea food',	'hotels',	'rainy and sunny',	'Varkala Beach, Janardhan Temple, Sivagiri Muth, Kappil Lake, Papanasam ',	'',	''),
+(67,	'Kerela',	' Kannur',	'Kannur – The Picture Perfect Coastal Town',	'weaving industries',	'',	'sea food',	'hotels',	' sun-kissed ',	'Ezhimala Beach, Fort St. Angelos, Tellicherry Fort and Rajarajeshwara \r\n',	'',	''),
+(68,	'Kerela',	'Kasargod',	'Kasargod – A Coastal Paradise In Kerala',	'entrancing beauty of ‘God’s own country',	'',	'thai food',	'hotels and resort',	'breezy',	'Bekal Fort, Madhur Temple, Thonikadavu and Ananthapura Lake Temple',	'',	''),
+(69,	'Meghalya',	'Shillong',	'The Mawlynnong Village',	'Asia\'s cleanest village',	'',	'swan',	'hotels',	'rainy',	'the Mawlynnong waterfall,the Double Decker Bridge',	'',	''),
+(70,	'Meghalya',	'Shillong \r\n',	'Laitlum Canyon',	'trek worth taking',	'',	'pork',	'hotels and resort',	'sunny',	'he panoramic view of Meghalaya from the top',	'',	''),
+(71,	'Meghalya',	'Cherapunjee',	'Double Decker Living Root Bridge',	'Double Decker Living Root Bridge',	'',	'pork',	'rented house',	'rainy',	' one of the most unique naturally formed structures',	'',	''),
+(72,	'Meghalya',	'Jowai',	'Ialong Park',	'Myndtu river and valley is lush green and a tonic for tired eyes',	'',	'special non -veggy thali',	'hotels and resort nearby',	'rainy and sunny',	'fishing and walks are a great way to relax and take in the natural landscape',	'',	''),
+(73,	'Meghalya',	'Tura',	'Balpakram National Park',	'canyons and gorges and overlooking the panoramic view of Tanguar Haor',	'',	'normal food available',	'',	'flora and fauna with good  climate',	'spectrum of species,8 varieties of feline predators',	'',	''),
+(74,	'Meghalya',	'Mawlai',	'Don Bosco Centre for Indigeneous',	'The Museum',	'',	'thai and cotinental',	'hotels and resort',	'rainy and sunny',	'The library housed in the museum',	'',	''),
+(75,	'Meghalya',	'Ri Bhoi',	'Umiam Lake',	'beautiful place',	'',	'',	'',	'cold',	'the lake fills up with water that gives it an unbelievably picturesque beauty',	'',	''),
+(76,	'Meghalya',	'Shillong',	'All Saints Church',	' magnificent setting of poinsettias dot the entrance of the church',	'',	'',	'',	'sunny',	' The Anglican church',	'',	''),
+(77,	'Meghalya',	'Cherapunjee',	'Mawsmai Cave',	'cave pitch black in broad daylight',	'',	'best non veggy food',	'famous and beautiful hotels',	'rainy and sunny',	'eerily dark and has cramped and narrow paths',	'',	''),
+(78,	'Meghalya',	'Nongstoin',	'Mawthadraishan Peak',	'the cleanest air you can breathe in',	'',	'',	'',	'rainy and cold',	'flip your arms open and let Meghalaya breathe some life into you, here',	'',	''),
+(79,	'Meghalya',	'Shillong',	'Elephant Falls',	' waterfall itself is made up of three very lucid steps',	'',	'',	'',	'rainy and suuny',	'structure of  black rocks resembling an elephant  during  earthquake',	'',	'');
+
+-- 2019-11-17 09:22:52
