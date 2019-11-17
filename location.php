@@ -1,9 +1,9 @@
 
 <?php
 $con=mysqli_connect("localhost","root","","bharat");
-$query1="select distinct city_name,state_name from trip WHERE location_type='mountains and valley'";
-$query2="select distinct city_name,state_name from trip WHERE location_type='desert and history'";
-$query3="select distinct city_name,state_name from trip WHERE location_type='beach wave and chill'";
+$query1="select distinct city_name,state_name,location_id from trip WHERE location_type='mountains and valley'";
+$query2="select distinct city_name,state_name,location_id from trip WHERE location_type='desert and history'";
+$query3="select distinct city_name,state_name,location_id from trip WHERE location_type='beach wave and chill'";
 $run1=mysqli_query($con,$query1);
 $run2=mysqli_query($con,$query2);
 $run3=mysqli_query($con,$query3);
@@ -42,8 +42,8 @@ $run3=mysqli_query($con,$query3);
     <header>
         <div id="header"></div>
         </header>
-        <br><br><br><br><br><br><br><br>
-        <div class="panel" style="display: block;width: 100%;height: 100%;display: block;">
+        <br><br><br><br>
+        <div class="panel" style="display: block;width: 100%;height: 100%;margin: 5%;">
             <br>
         <h1 class="hed">MOUNTAINS AND VALLEYS</h1>
         <?php
@@ -54,14 +54,14 @@ $run3=mysqli_query($con,$query3);
             $run7=mysqli_query($con,$query7);
             $a=mysqli_fetch_assoc($run7);
         ?>
-        <div class="container" style="float: left;">
+        <div class="container" style="display: inline-block;">
             	<div class="box1">
     		               <div id="imga"><img src="maharashtra.png" height="90%" width="100%"></div><!-- <?php echo $a['image_address'];?> -->
     		               <div class="content">
-    	                        <a href="#"><i class="fa fa-heart" aria-hidden="true">like</i></a>
+    	                        <i class="fa fa-heart" aria-hidden="true" id="<?php echo 'like'.$f['location_id'];?>" style="color: white;" onclick="changeColor('<?php echo $f['location_id'];?>')"></i>
     	                    </div>
     	                    <div class="content1">
-    	                        <a href="#"><i class="fa fa-comment" aria-hidden="true">Review</i></a>
+    	                        <i class="fa fa-comment" aria-hidden="true" ></i>
     	                    </div>
     	                    <div id="cty"><b><?php echo $f['city_name']?></b></div> 
     	                    <div id="stt">(<?php echo $f['state_name']?>)</b></div>
@@ -87,22 +87,24 @@ $run3=mysqli_query($con,$query3);
         }
         ?>
     </div>
-    <br><br><br><br><br><br>
-    <div class ="panel" style="width: 100%;height: 100%;display: block;">
-        <br><br><br>
-        <h1 class="hed">DESERT AND HISTORY</h1>
+    <!-- <br><br><br><br><br><br> -->
+    <p>
+       
+    <div class ="panel" style="margin: 5%;">
+        
+        <h1>DESERT AND HISTORY</h1>
         <?php
         while($f=mysqli_fetch_assoc($run2))
         {
         ?>
-         <div class="container" style="float: left;">
-            <div class="box1">
+         <div class="container" style="display: inline-block;">
+            <div class="box1"  style="float: left;">
                 <div id="imga"><img src="maharashtra.png" height="90%" width="100%"></div>
                 <div class="content">
-                    <a href="#"><i class="fa fa-heart" aria-hidden="true">like</i></a>
+                    <i class="fa fa-heart" id="<?php echo 'like'.$f['location_id'];?>" style="color: white;" onclick="changeColor('<?php echo $f['location_id'];?>')" aria-hidden="true"></i>
                 </div>
                 <div class="content1">
-                    <a href="#"><i class="fa fa-comment" aria-hidden="true">Review</i></a>
+                    <i class="fa fa-comment" aria-hidden="true"></i>
                 </div>
                 <div id="cty"><b><?php echo $f['city_name']?></b></div> 
                     <div id="stt">(<?php echo $f['state_name']?>)</b></div>
@@ -128,23 +130,37 @@ $run3=mysqli_query($con,$query3);
         }
         ?>
     </div>
-    <br><br><br><br><br><br>
-    <div class="panel" style="width: 100%;height: 100%;display: block;  ">
-            <h1 class="hed" style="display: block;text-align: left;">BEACH WAVE AND CHILL </h1>
+</p>
+    <script type="text/javascript">
+        function changeColor($id)
+        {
+            
+            var likeColor=document.getElementById('like'+$id);
+            if(likeColor.style.color="white")
+                likeColor.style.color="#3E6E71 ";
+            
+        };
+    </script>
+
+<!-- <br><br><br><br><br><br> -->
+    <p>
+    <div class="panel" style="margin: 5%;">
+            <h1 style="text-align: left;">BEACH WAVE AND CHILL </h1>
         <?php
         while($f=mysqli_fetch_assoc($run3))
         {
         ?>
-       <div class="container" style="float: left;">
-            <div class="box1">
+       
+         <div class="container" style="display: inline-block;">
+            <div class="box1"  style="float: left;">
                 <div id="imga"><img src="maharashtra.png" height="90%" width="100%"></div>
                 <div class="content">
-                    <a href="#"><i class="fa fa-heart" aria-hidden="true">like</i></a>
+                    <i class="fa fa-heart" id="<?php echo 'like'.$f['location_id'];?>" style="color: white;" onclick="changeColor('<?php echo $f['location_id'];?>')" aria-hidden="true"></i>
                 </div>
                 <div class="content1">
-                    <a href="#"><i class="fa fa-comment" aria-hidden="true">Review</i></a>
+                    <i class="fa fa-comment" aria-hidden="true"></i>
                 </div>
-              <div id="cty"><b><?php echo $f['city_name']?></b></div> 
+                <div id="cty"><b><?php echo $f['city_name']?></b></div> 
                     <div id="stt">(<?php echo $f['state_name']?>)</b></div>
                     <div id="txt">Famous for :</div>
               <div id="plc">
@@ -162,15 +178,16 @@ $run3=mysqli_query($con,$query3);
                 }
                 ?>
             </div>
-     
-            </div>    
-        </div>
+            </div>   
+            </div>
+        
             <?php
         }
         ?>
     </div>
+</p>
     
-        <br><br><br><br><br>
+        <!-- <br><br><br><br><br> -->
         <script
     src="https://code.jquery.com/jquery-3.3.1.js"
     integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -182,9 +199,9 @@ $run3=mysqli_query($con,$query3);
  
 });
     </script>
+    <!-- <br><br><br><br><br><br><br><br><br><Br><Br><Br><br><br><br><br><Br><br><br><br><Br><Br><Br>
     <br><br><br><br><br><br><br><br><br><Br><Br><Br><br><br><br><br><Br><br><br><br><Br><Br><Br>
-    <br><br><br><br><br><br><br><br><br><Br><Br><Br><br><br><br><br><Br><br><br><br><Br><Br><Br>
-    <br><br><br><br><br><br><br><br><br><Br><Br><Br><br><br><br><br><Br><br><br><br><Br><Br><Br>
+    <br><br><br><br><br><br><br><br><br><Br><Br><Br><br><br><br><br><Br><br><br><br><Br><Br><Br> -->
     <footer>
         <div id="footer"></div>
         </footer>
