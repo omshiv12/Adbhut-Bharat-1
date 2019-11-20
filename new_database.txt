@@ -1,0 +1,30 @@
+-- Adminer 4.6.2 MySQL dump
+
+
+
+SET NAMES utf8;
+SET time_zone = '+00:00';
+SET foreign_key_checks = 0;
+SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
+
+USE bharat;
+
+DROP TABLE IF EXISTS `advertisement`;
+CREATE TABLE `advertisement` (
+  `ad_id` int(11) NOT NULL,
+  `agent_id` int(11) NOT NULL,
+  `offer` text NOT NULL,
+  `img` varchar(255) NOT NULL,
+  `price` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `state` varchar(255) NOT NULL,
+  `rating` int(11) NOT NULL DEFAULT '0',
+  `status` varchar(20) NOT NULL DEFAULT 'Inactive'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `advertisement` (`ad_id`, `agent_id`, `offer`, `img`, `price`, `city`, `state`, `rating`, `status`) VALUES
+(1,	20,	'5 nights 6 day stay.\r\nStay in srinagar valley.\r\nGulmary trip ,gondola ride.\r\nSonmarg trip.\r\nPahalgham, patnitop.\r\nDal lak shikara ride, and many more.\r\n',	'',	'40000',	'',	'kashmir',	0,	'Active'),
+(2,	21,	'3 nights,4 days.\r\nSarnath trip.\r\nGanga aarti along with boat ride through all the ghats.\r\nVishwanath mandir temple, sankat mochan temple visit.\r\nRadisson Blu hotel stay.',	'',	'35000',	'varanasi',	'uttar pradesh',	0,	'Inactive'),
+(1,	21,	'5 nights 6 day stay.\r\nStay in srinagar valley.\r\nGulmary trip ,gondola ride.\r\nSonmarg trip.\r\nPahalgham, patnitop.\r\nDal lak shikara ride, and many more.\r\n',	'',	'40000',	'',	'kashmir',	0,	'Active');
+
+-- 2019-11-20 10:42:09
