@@ -30,6 +30,10 @@
 <header>
 	<div id="header"></div>
 </header>
+<?php 
+ //$result is the array of locations being fetched
+$result['state']='kashmir';
+?>
 <br><br><br>
 		
 		<div class="content">
@@ -41,7 +45,7 @@
 							<div class="label">
 								<div class="title">Kashmir</div>
 								<div class="price">from<span>Rs.40k</span></div>
-								<a href="#">Learn More</a>
+								<a href="advertisement.php?state=<?php echo $result['state']; ?>">Learn More</a>
 							</div>
 						</div>
 					</div>
